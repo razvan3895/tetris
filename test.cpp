@@ -9,6 +9,10 @@ private:
     Map left, right;
 public:
     Game(int height, int width):left(height, width), right(height, width) { }
+    void initGame() {
+        left.startNextIteration();
+        right.startNextIteration();
+    }
     void moveUpA() {
         left.moveUp();
     }
@@ -110,8 +114,8 @@ public:
 
 int main() {
     string op;
-    Game g(5, 10);
-    g.represent();
+    Game g(7, 10);
+    g.initGame();
     while(!g.gameOver()) {
         g.represent();
         cin >> op;
@@ -123,6 +127,15 @@ int main() {
             g.rotateA();
         if(op == "d")
             g.moveForwardA();
+        if(op == "u")
+            g.moveUpB();
+        if(op == "j")
+            g.moveDownB();
+        if(op == "k")
+            g.rotateB();
+        if(op == "h")
+            g.moveForwardB();
+
         // if(op == "chk")
             // cout << map.columnIsFull(9);
     }
